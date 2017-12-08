@@ -62,19 +62,20 @@ if(!empty($_POST['submitted'])) {
 include_once('./inc/header.php');
 ?>
   <form method="POST" action="connexion.php" id="formconnexion">
-    <div class="form-group">
-			<label for="pseudo">Pseudo ou mail<span>*</span></label>
-      <p class="error"><?php if(!empty($errors['pseudo'])) { echo $errors['pseudo']; } ?></p>
-			<?php nouvelInputSQL($textLabel='pseudo',$typeInput='text',$nomInput='pseudo',$placeholder='pseudo',$errors); ?>
-    </div>
-
-		<?php nouvelInputSQL($textLabel='Entrez votre mot de passe',$typeInput='password',$nomInput='password',$placeholder='Votre mot de passe',$errors) ?>
-    <label>
-      <input type="checkbox" name="remember" /> Se souvenir de moi
-    </label>
-    <br/>
-    <?php inputSubmit() ?>
-	  <a href="passwordforget.php">Mot de passe perdu</a>
+		<?php nouvelInputSQL($textLabel='pseudo',$typeInput='text',$nomInput='pseudo',$placeholder='pseudo',$errors);
+		nouvelInputSQL($textLabel='Entrez votre mot de passe',$typeInput='password',$nomInput='password',$placeholder='Votre mot de passe',$errors); ?>
+		<div class="checkbox">
+			<div class="label"></div>
+			<div class="input">
+				<label for="stayLog">Se souvenir de moi</label>
+				<input type="checkbox" name="stayLog" />
+			</div>
+		</div><?php
+		inputSubmit() ?>
+		<div class="mdpOublie">
+			<div class="label"></div>
+			<a href="./forgotten-password.php"><p>Mot de passe oublié ?</p></a>
+		</div>
   </form>
 
 
