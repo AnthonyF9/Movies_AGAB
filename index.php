@@ -14,6 +14,7 @@ $movies = $query->fetchAll();
 
 
 $errors = array();
+$nomTableauSource = array('2000','2001');
 
 
 if (isset($_GET['log'])) {
@@ -34,7 +35,7 @@ if (isset($_GET['log'])) {
           <button type="button" name="button"> Filtres  </button>
             <form  action="index.php" method="post">
               <?php   nouvelInputSQL2($textLabel='Action',$typeInput='checkbox',$nomInput='categ',$placeholder='',$errors) ?>
-              <?php   nouveauSelect($textLabel='Titre',$nomSelect='title',$placeholder='.........',$errors,$nomTableauSource) ?>
+              <?php   nouveauSelect2($textLabel='Année',$nomSelect='years',$placeholder='???? ',$errors,$nomTableauSource) ?>
               <input type="submit" value="Submit">
             </form>
         </div>
@@ -46,12 +47,12 @@ if (isset($_GET['log'])) {
         foreach ($movies as $movie) {
           if (file_exists('posters/' . $movie['id'] . '.jpg')) { ?>
             <div class="affiche">
-              <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/>
+              <a href="./details.php?movie=<?= $movie['slug'] ?>">  <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/> </a>
             </div> <?php
           }
           else { ?>
             <div class="affiche">
-              <div class="img sansimage"><p><?=$movie['title'] ?></p></div>
+              <a href="./details.php?movie=<?= $movie['slug'] ?>">  <div class="img sansimage"><p><?=$movie['title'] ?></p></div> </a>
             </div> <?php
           }
         }

@@ -81,6 +81,26 @@ function nouveauSelect($textLabel='Titre',$nomSelect='title',$placeholder='.....
     ?>
   </div><?php
 }
+function nouveauSelect2($textLabel='Titre',$nomSelect='title',$placeholder='.........',$errors,$nomTableauSource)
+{ ?>
+  <div>
+    <label class="label" for="<?php echo $nomSelect ?>"><?php echo $textLabel ?> : </label>
+    <select name="<?php echo $nomSelect ?>">
+      <option value=""><?php echo $placeholder ?></option>
+      <?php foreach ($nomTableauSource as $key => $value) { ?>
+        <option <?php if(!empty($_POST[$nomSelect])) { if($value == $_POST[$nomSelect]) { echo 'selected="selected" ';}} ?> value="<?php echo $value; ?>"><?php echo $value; ?>
+        </option>
+      <?php } ?>
+    </select>
+  </div>
+  <div class="erreur pform">
+    <?php
+      if (!empty($errors[$nomSelect])) {
+        echo $errors[$nomSelect];
+      }
+    ?>
+  </div><?php
+}
 function getAllArticles($order = 'created_at',$orderby = 'DESC',$limit = 'all',$nomSelection)
 {
   global $pdo;
