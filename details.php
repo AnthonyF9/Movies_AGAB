@@ -13,7 +13,7 @@ include_once('./inc/header.php');
     <?php
 
     //Attention : nom de variables et de fonctions provisoire ^^
-
+// huiuheziuhezi
     if (!empty($_GET['movie'])) {
     $slug = $_GET['movie'];
     $sql = "SELECT * FROM all_movies WHERE slug = :movie";
