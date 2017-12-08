@@ -8,12 +8,11 @@ include_once('./inc/header.php');
 
 
 
-  <main>
+  <main class="affiche">
 
     <?php
 
     //Attention : nom de variables et de fonctions provisoire ^^
-// huiuheziuhezi
     if (!empty($_GET['movie'])) {
     $slug = $_GET['movie'];
     $sql = "SELECT * FROM all_movies WHERE slug = :movie";
@@ -25,9 +24,11 @@ include_once('./inc/header.php');
       die('404');
     }
 
+        echo '<div class="titraffiche">';
         echo '<h1>'.$movie['title'].'</h1>';
         echo single_affiche($movie);
-        echo '<section class="film">';
+        echo '</div>';
+        echo '<section class="detail">';
         echo '<p>Année : '.$movie['year'].'</p>';
         echo '<p>Genre : '.$movie['genres'].'</p>';
         echo '<p>Réalisateur : '.$movie['directors'].'</p>';
