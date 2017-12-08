@@ -5,6 +5,7 @@ session_start();
 $title = 'Connexion';
 $errors = array();
 
+
 if(!empty($_POST['submitme'])) {
 
 	// protection XSS
@@ -66,7 +67,6 @@ if(!empty($_POST['submitme'])) {
 include_once('./inc/header.php');
 ?>
   <form method="POST" action="connexion.php" id="formconnexion">
-
     <div class="form-group">
       <label for="pseudo">Pseudo ou mail<span>*</span></label>
       <p class="error"><?php if(!empty($errors['pseudo'])) { echo $errors['pseudo']; } ?></p>
@@ -74,12 +74,17 @@ include_once('./inc/header.php');
     </div>
 <?php nouvelInputSQL($textLabel='Entrez votre mot de passe',$typeInput='password',$nomInput='password',$placeholder='Votre mot de passe',$errors) ?>
 
-
     <label>
       <input type="checkbox" name="remember" /> Se souvenir de moi
     </label>
     <br>
+
+    <?php inputSubmit()
+    { ?>
+      <div>
     <input type="submit" name="submitme" value="Connexion" class="btn btn-default" />
+  </div><?php
+}
   </form>
   <a href="passwordforget.php">Mot de passe perdu</a>
 

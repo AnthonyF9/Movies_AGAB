@@ -13,7 +13,7 @@ $query->execute();
 $movies = $query->fetchAll();
 
 
-
+$errors = array();
 
 if (isset($_GET['log'])) {
   if($_GET['log'] == 'out') {
@@ -27,12 +27,20 @@ if (isset($_GET['log'])) {
 
       <main>
 
+        <div id="buttons">
+          <a href="index.php"><button type="button" name="button"> + de films ! </button></a>
 
-        <button type="button" name="button"> + de films ! </button>
+          <button type="button" name="button"> Filtres  </button>
+            <form  action="index.php" method="post">
+              <?php   nouvelInputSQL2($textLabel='Action',$typeInput='checkbox',$nomInput='categ',$placeholder='',$errors) ?>
+              <?php   nouveauSelect($textLabel='Titre',$nomSelect='title',$placeholder='.........',$errors,$nomTableauSource) ?>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
 
-        <button type="button" name="button"> Filtres  </button>
 
-        <div id="aaa">
+
+        <div id="flexAffiches">
         <?php
         foreach ($movies as $movie) {
           if (file_exists('posters/' . $movie['id'] . '.jpg')) { ?>
@@ -48,6 +56,8 @@ if (isset($_GET['log'])) {
         }
         ?>
         </div>
+         ?>
+
 
 
 

@@ -33,6 +33,17 @@ function nouvelInputSQL($textLabel='Titre',$typeInput='text',$nomInput='title',$
     <?php if (!empty($errors[$nomInput])) { echo $errors[$nomInput]; } ?>
   </div><?php
 }
+function nouvelInputSQL2($textLabel='Titre',$typeInput='text',$nomInput='title',$placeholder='Titre',$errors)
+{ ?>
+  <div>
+    <label class="label" for="<?php echo $nomInput ?>"><?php echo $textLabel ?> : </label>
+    <input class="input" type="<?php echo $typeInput ?>" name="<?php echo $nomInput ?>" placeholder="<?php echo $placeholder ?>" value="<?php if(!empty($_POST[$nomInput])) { echo $_POST[$nomInput]; } ?>">
+  </div>
+  <div class="erreur pform">
+    <label class="label"></label>
+    <?php if (!empty($errors[$nomInput])) { echo $errors[$nomInput]; } ?>
+  </div><?php
+}
 function nouveauTextareaSQL($textLabel='Titre',$nomTextarea='title',$placeholder='Titre',$errors)
 { ?>
   <div>
@@ -113,4 +124,19 @@ function ifIs_logged($location='index')
     header('Location: ./' . $location . '.php');
   }
 }
+
+function single_affiche($movie)
+{
+  $image = $movie['id'];
+  $alt = $movie['title'];
+
+
+  if (file_exists('posters/'.$image.'.jpg')) {
+    $return = '<img src="posters/'.$image.'.jpg" alt="'.$alt.'">';
+  } else {
+    $return = 'poster introuvable';
+  }
+  return $return;
+}
+
 ?>
