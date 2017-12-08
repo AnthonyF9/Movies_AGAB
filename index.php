@@ -20,7 +20,11 @@ $queryyear->execute();
 $years = $queryyear->fetchAll();
 
 $errors = array();
-$nomTableauSource = array('2000','2001');
+$yearsTable = array('2000','2001');
+
+
+
+$notesTable = array('Les plus populaires','Les moins populaires');
 
 
 if (isset($_GET['log'])) {
@@ -38,19 +42,19 @@ if (isset($_GET['log'])) {
         <div id="buttons">
           <a href="index.php"><button type="button" name="button"> + de films ! </button></a>
 
-          <button type="button" name="button"> Filtres  </button>
-            <form  action="index.php" method="post">
+          <button type="button" name="button" id="hide"> Filtres  </button>
+            <form id="form" class="show" action="index.php" method="post">
               <?php   nouvelInputSQL2($textLabel='Action',$typeInput='checkbox',$nomInput='categ',$placeholder='',$errors) ?>
-              <?php   nouveauSelect2($textLabel='Année',$nomSelect='years',$placeholder='???? ',$errors,$nomTableauSource) ?>
+              <?php   nouveauSelect2($textLabel='Année',$nomSelect='years',$placeholder='???? ',$errors,$yearsTable) ?>
+              <?php   nouveauSelect2($textLabel='Popularité',$nomSelect='notes',$placeholder='???? ',$errors,$notesTable) ?>
+              <?php   nouvelInputSQL2($textLabel='Recherche',$typeInput='text',$nomInput='search',$placeholder='Rechercher un film',$errors) ?>
               <input type="submit" value="Submit">
             </form>
         </div>
 
         <?php
 
-        foreach ($years as $year) {
-          echo $year['year'] . '</br>';
-        }
+
 
         ?>
 

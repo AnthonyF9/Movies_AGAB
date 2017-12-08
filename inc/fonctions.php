@@ -152,9 +152,9 @@ function single_affiche($movie)
 
 
   if (file_exists('posters/'.$image.'.jpg')) {
-    $return = '<img src="posters/'.$image.'.jpg" alt="'.$alt.'">';
+    $return = '<div class="img"><img src="posters/'.$image.'.jpg" alt="'.$alt.'"></div>';
   } else {
-    $return = 'poster introuvable';
+    $return = '<div class="img" class="sansimage"><p class="introuvable">poster introuvable<p></div>';
   }
   return $return;
 }

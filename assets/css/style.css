@@ -33,8 +33,32 @@ a {
   text-align: center;
   font-weight: bold;
 }
+.introuvable
+{
+  text-align: center;
+  line-height: 325px;
+}
+.titraffiche
+{
+  text-align: center;
+  position: relative;
+  margin-left: 38%;
+  margin-right: 38%;
+}
+.titraffiche h1
+{
+  font-size: 2.5em;
+}
+.detail, .synopsis
+{
+  text-align: center;
+}
 
 #buttons {
   display: block;
   text-align: center;
+}
+
+.show {
+  display: none;
 }
