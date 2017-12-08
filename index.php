@@ -12,6 +12,11 @@ $query = $pdo->prepare($sql);
 $query->execute();
 $movies = $query->fetchAll();
 
+$sql = "SELECT year FROM all_movies ORDER BY year DESC";
+//
+$queryyear = $pdo->prepare($sql);
+$queryyear->execute();
+$years = $queryyear->fetchAll();
 
 $errors = array();
 $nomTableauSource = array('2000','2001');
@@ -39,6 +44,14 @@ if (isset($_GET['log'])) {
               <input type="submit" value="Submit">
             </form>
         </div>
+
+        <?php
+
+        foreach ($years as $year) {
+          echo $year['year'] . '</br>';
+        }
+
+        ?>
 
 
 
