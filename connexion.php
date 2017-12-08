@@ -65,6 +65,7 @@ include_once('./inc/header.php');
     <div class="form-group">
 			<label for="pseudo">Pseudo ou mail<span>*</span></label>
       <p class="error"><?php if(!empty($errors['pseudo'])) { echo $errors['pseudo']; } ?></p>
+
 			<?php nouvelInputSQL($textLabel='pseudo',$typeInput='text',$nomInput='pseudo',$placeholder='pseudo',$errors); ?>
     </div>
 
