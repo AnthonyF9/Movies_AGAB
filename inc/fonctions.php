@@ -113,4 +113,19 @@ function ifIs_logged($location='index')
     header('Location: ./' . $location . '.php');
   }
 }
+
+function single_affiche($movie)
+{
+  $image = $movie['id'];
+  $alt = $movie['title'];
+
+
+  if (file_exists('posters/'.$image.'.jpg')) {
+    $return = '<img src="posters/'.$image.'.jpg" alt="'.$alt.'">';
+  } else {
+    $return = 'poster introuvable';
+  }
+  return $return;
+}
+
 ?>
