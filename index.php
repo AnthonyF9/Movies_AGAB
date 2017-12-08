@@ -15,6 +15,7 @@ $movies = $query->fetchAll();
 
 $errors = array();
 
+
 if (isset($_GET['log'])) {
   if($_GET['log'] == 'out') {
     session_destroy();
@@ -33,7 +34,7 @@ if (isset($_GET['log'])) {
           <button type="button" name="button"> Filtres  </button>
             <form  action="index.php" method="post">
               <?php   nouvelInputSQL2($textLabel='Action',$typeInput='checkbox',$nomInput='categ',$placeholder='',$errors) ?>
-
+              <?php   nouveauSelect($textLabel='Titre',$nomSelect='title',$placeholder='.........',$errors,$nomTableauSource) ?>
               <input type="submit" value="Submit">
             </form>
         </div>
