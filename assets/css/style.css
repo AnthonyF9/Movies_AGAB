@@ -1,0 +1,40 @@
+body {
+  background-color: #333333;
+}
+
+a {
+  color: white;
+}
+
+#flexAffiches{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.affiche {
+  position: relative;
+  margin: 15px;
+}
+.affiche .img {
+  height: 325px;
+  width: 220px;
+  background-color: white;
+  position: relative;
+  padding: 5px;
+}
+.affiche .img.sansimage {
+  height: 325px;
+  width: 220px;
+}
+.affiche .img.sansimage p {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-weight: bold;
+}
+
+#buttons {
+  display: block;
+  text-align: center;
+}
