@@ -1,9 +1,11 @@
 <?php
-include_once('./inc/pdo.php');
-include_once('./inc/fonctions.php');
-session_start();
-ifIs_logged($location='index');
 $title = 'Connexion';
+// include_once('./inc/pdo.php');
+// include_once('./inc/fonctions.php');
+// session_start();
+include_once('./cookies.php');
+global $pdo;
+ifIs_logged($location='index');
 $errors = array();
 if(!empty($_POST['submitted'])) {
 
@@ -34,9 +36,9 @@ if(!empty($_POST['submitted'])) {
           else {
 	        	if(password_verify($password,$user['password'])) {
 	        		// if rember est coché
-	        		if(!empty($_POST['remember'])) {
+	        		if(!empty($_POST['stayLog'])) {
 	        			// création d'un cookies qui dure 5 jour
-	                 setcookie('userck', $user['id']. '---' . sha1($user['pseudo'].$user['password'].$_SERVER['REMOTE_ADDR']) , time() + 3600 * 24 * 5,'/');
+	                 setcookie('userck', $user['id']. '---' . sha1($user['username'].$user['password'].$_SERVER['REMOTE_ADDR']) , time() + 3600 * 24 * 5,'/', 'localhost', false, true);
 
 	        		}
 
@@ -47,8 +49,8 @@ if(!empty($_POST['submitted'])) {
 	        			'ip'     => $_SERVER['REMOTE_ADDR'],
 
 	        		);
-
-	        		// header('Location: index.php');
+							include_once('./cookies.php');
+	        		header('Location: index.php');
 
 	        	}
             else {

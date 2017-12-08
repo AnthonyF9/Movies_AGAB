@@ -1,8 +1,9 @@
 <?php
 $title = 'Accueil';
-include_once('./inc/pdo.php');
-include_once('./inc/fonctions.php');
-session_start();
+// include_once('./inc/pdo.php');
+// include_once('./inc/fonctions.php');
+// session_start();
+include_once('./cookies.php');
 include_once('./inc/header.php');
 
 
@@ -25,7 +26,7 @@ $nomTableauSource = array('2000','2001');
 if (isset($_GET['log'])) {
   if($_GET['log'] == 'out') {
     session_destroy();
-    setcookie('auth', '', time()-3600, '/', 'localhost', false, true);
+    setcookie('userck', '', time()-3600, '/', 'localhost', false, true);
     header('Location: ./index.php');
   } else { header ('Location: ./index.php');}
 }

@@ -1,9 +1,9 @@
 <?php
 $title = 'Inscription';
-include_once('./inc/pdo.php');
-include_once('./inc/fonctions.php');
-session_start();
-// include_once('./cookies.php');
+// include_once('./inc/pdo.php');
+// include_once('./inc/fonctions.php');
+// session_start();
+include_once('./cookies.php');
 global $pdo;
 ifIs_logged($location='index');
 $errors = array();
