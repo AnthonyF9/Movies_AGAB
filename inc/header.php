@@ -17,6 +17,15 @@
           <nav>
             <ul>
               <li><a href="./index.php">Accueil</a></li>
+              <?php
+              if (is_logged() == true) { ?>
+                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span><span><a href="./logout.php">Se déconnecter</a></span></li><?php
+              }
+              else { ?>
+                <li><a href="./inscription.php">Inscription</a></li>
+                <li><a href="./connexion.php">Se connecter</a></li><?php
+              }
+              ?>
             </ul>
           </nav>
         </div>
