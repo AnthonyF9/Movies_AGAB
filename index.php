@@ -6,7 +6,7 @@ session_start();
 include_once('./inc/header.php');
 
 
-$sql = "SELECT * FROM all_movies ORDER BY id ASC";
+$sql = "SELECT * FROM all_movies ORDER BY rand() LIMIT 100";
 //
 $query = $pdo->prepare($sql);
 $query->execute();
@@ -14,7 +14,6 @@ $movies = $query->fetchAll();
 
 
 
-$numero = rand(0, count($movies));
 
 if (isset($_GET['log'])) {
   if($_GET['log'] == 'out') {
@@ -33,20 +32,22 @@ if (isset($_GET['log'])) {
 
         <button type="button" name="button"> Filtres  </button>
 
-
+        <div id="aaa">
         <?php
-
-
-          if (file_exists('posters/' . $movies[$numero]['id'] . '.jpg')) { ?>
-                <p><img src="posters/<?=$movies[$numero]['id'] ?>.jpg" alt="<?= $movies[$numero]['title'] ?>"/></p>; <?php
-          } else { ?>
-            <div id="whitePoster">
-            <p><?=$movies[$numero]['title'] ?></p>;
-          </div> <?php
+        foreach ($movies as $movie) {
+          if (file_exists('posters/' . $movie['id'] . '.jpg')) { ?>
+            <div class="affiche">
+              <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/>
+            </div> <?php
           }
-
-         ?>
-
+          else { ?>
+            <div class="affiche">
+              <div class="img sansimage"><p><?=$movie['title'] ?></p></div>
+            </div> <?php
+          }
+        }
+        ?>
+        </div>
 
 
 
