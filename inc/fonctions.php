@@ -144,13 +144,10 @@ function ifIs_logged($location='index')
     header('Location: ./' . $location . '.php');
   }
 }
-
 function single_affiche($movie)
 {
   $image = $movie['id'];
   $alt = $movie['title'];
-
-
   if (file_exists('posters/'.$image.'.jpg')) {
     $return = '<div class="img"><img src="posters/'.$image.'.jpg" alt="'.$alt.'"></div>';
   } else {
