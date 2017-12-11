@@ -5,7 +5,7 @@ $title = 'Votre liste';
 include_once('./cookies.php'); //pdo, fonctions et sesions_start apppelés dedans
 
 if(is_logged() == true){
-  $sql = "SELECT * FROM notes AS n LEFT JOIN users ON users.id = n.id_user, all_movies ON all_movies.id = n.id_movie ORDER BY n.created_at DESC";
+  $sql = "SELECT m.title AS title FROM notes AS n LEFT JOIN all_movies AS m ON m.id = n.id_movie ORDER BY n.created_at DESC";
   $query = $pdo->prepare($sql);
   $query->execute();
   $lists = $query->fetchAll();
