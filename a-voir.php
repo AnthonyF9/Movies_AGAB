@@ -27,11 +27,7 @@ include_once('./inc/header.php');
     <?php
     echo '<ul>';
     foreach ($lists as $key => $list) {
-      echo '<li>';
-      // echo single_affiche($list);
-      echo '<br/>';
-      echo $list['title'];
-      echo '</li>';
+      echo '<li>'.$list['title'].'</li>';
     }
     echo '</ul>';
     ?>
