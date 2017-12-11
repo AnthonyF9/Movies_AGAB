@@ -23,7 +23,7 @@ if (!empty($_GET['movie'])) {
 
 if (!empty($_GET['bouton'])) {
   $button = '';
-  $sql = "SELECT * FROM notes AS n RIGHT JOIN all_movies AS m ON m.id = n.id_movie WHERE m.slug = :movie";
+  $sql = "SELECT movie_id FROM notes AS n RIGHT JOIN all_movies AS m ON m.id = n.id_movie WHERE m.slug = :movie";
   $query = $pdo->prepare($sql);
   $query->bindValue(':movie', $slug, PDO::PARAM_STR);
   $query->execute();
