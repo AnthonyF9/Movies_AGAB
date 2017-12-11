@@ -14,9 +14,16 @@ $movies = $stmt->fetchAll();
 ?>
 
 <?php include('inc/headerback.php'); ?>
-<a href="nwpost.php"></a>
+<a href="details.php"></a>
 
   <table class="table table-sm">
+    <tr>
+      <td>id</td>
+      <td>title</td>
+      <td>year</td>
+      <td>rating</td>
+      <td>actions</td>
+    </tr>
 <?php
     foreach ($movies as $movie) {
 
@@ -24,12 +31,10 @@ $movies = $stmt->fetchAll();
        echo '<td>'. $movie['title'] . '</td>';
        echo '<td>'. $movie['year'] . '</td>';
        echo '<td>'. $movie['rating'] . '</td>';
-       echo '<td>'. $movie ['genres'] .'</td>';
-        echo '<td>'. $movie['created'] .'</td>';
-        echo '<td>'. $movie['modified'] .'</td>
-<td><a href=".php?id='. $movie['id'].'" class="btn btn-success">Edit</a></td>
-       </tr>';
-
+       echo '<td><a href="back-modif.php?id='. $movie['id'].'" class="btn btn-success">Voir sur le site</a>
+                  <a href="back-modif.php?id='. $movie['id'].'" class="btn btn-success">Modifier</a>
+                  <a href="back-modif.php?id='. $movie['id'].'" class="btn btn-success">Effacer</a>
+                  </td></tr>';
      }
   ?>
 </table>

@@ -116,7 +116,7 @@ include_once('./inc/header.php');
         foreach ($movies as $movie) {
           if (file_exists('posters/' . $movie['id'] . '.jpg')) { ?>
             <div class="affiche">
-              <a href="./details.php?movie=<?= $movie['slug'] ?>">  <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/> </a>
+              <a href="./details.php?movie=<?= $sql['genres'], $sql['all_movies'], $movie['slug'] ?>">  <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/> </a>
             </div> <?php
           }
           else { ?>
