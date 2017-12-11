@@ -63,6 +63,18 @@ if(!empty($_POST['submitted'])) {
 
 include_once('./inc/header.php');
 ?>
+	<div>
+		<p><?php
+			if (isset($_GET['registration'])) {
+				if ($_GET['registration'] == 'success') {
+					?><p class="success">Votre inscription a été validée !</p><?php
+				}
+				else {
+					header('Location: ./index.php');
+				}
+			} ?>
+		</p>
+	</div>
   <form method="POST" action="connexion.php" id="formconnexion" class="main login">
 		<?php nouvelInputSQL($textLabel='pseudo',$typeInput='text',$nomInput='pseudo',$placeholder='pseudo',$errors);
 		nouvelInputSQL($textLabel='Entrez votre mot de passe',$typeInput='password',$nomInput='password',$placeholder='Votre mot de passe',$errors); ?>
