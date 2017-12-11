@@ -9,14 +9,13 @@ include_once('./inc/header.php');
 
 if (!empty($_GET['submitfiltres']))  {
 
+
   $sql = "SELECT * FROM all_movies
           WHERE 1 = 1";
 
-          if(!empty($_GET['years'])) {
+          if(is_numeric($_GET['years'])) {
               $annee = $_GET['years'];
-
               $sql .= " AND year = :annee";
-
           }
 
           if(!empty($_GET['categ'])) {
@@ -24,7 +23,11 @@ if (!empty($_GET['submitfiltres']))  {
               $sql .= " AND genres LIKE :categorie ";
           }
 
-
+          // EN COURS
+          if(!empty($_GET['popu'])) {
+              $popularite = $_GET['popu'];
+              $sql .= " AND popularity ORDER BY popularity DESC ";
+          }
 
 
           // if(!empty($_GET['search'])) {
@@ -40,7 +43,9 @@ if (!empty($_GET['submitfiltres']))  {
     if (!empty($_GET['categ'])) {
       $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_INT);
     }
+    if (!empty($_GET['years']) && is_numeric($_GET['years'])) {
     $query->bindValue(':annee',$annee,PDO::PARAM_INT);
+    }
     $query->execute();
     $movies = $query->fetchAll();
 
@@ -51,16 +56,6 @@ if (!empty($_GET['submitfiltres']))  {
        $fail ="";
     }
   }
-
-
-
-
-
-
-
-
-
-
 
 
 if (isset($_GET['log'])) {
@@ -75,7 +70,7 @@ if (isset($_GET['log'])) {
 
       <main>
 
-        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_GET['categ'])) { echo '"'.$categorie.'"'; } ?> "<?= $annee  ?>"</h2>
+        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_GET['categ'])) { echo '"'.$categorie.'"'; } ?> <?php if (!empty($_GET['years']) && is_numeric($_GET['years'])) { echo '"'.$annee.'"'; } ?></h2>
         <p> <?= $fail ?> </p>
 
         <div id="flexAffiches">
