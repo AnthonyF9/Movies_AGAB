@@ -21,9 +21,7 @@ if (!empty($_GET['submitfiltres']))  {
 
           if(!empty($_GET['categ'])) {
               $categorie = $_GET['categ'];
-
               $sql .= " AND genres LIKE :categorie ";
-
           }
 
 
@@ -39,7 +37,9 @@ if (!empty($_GET['submitfiltres']))  {
 
     $query = $pdo->prepare($sql);
     // $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
-    $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_INT);
+    if (!empty($_GET['categ'])) {
+      $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_INT);
+    }
     $query->bindValue(':annee',$annee,PDO::PARAM_INT);
     $query->execute();
     $movies = $query->fetchAll();
@@ -75,7 +75,7 @@ if (isset($_GET['log'])) {
 
       <main>
 
-        <h2 class="titlesearch"> Resultats de la recherche "<?= $categorie  ?>" "<?= $annee  ?>"</h2>
+        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_GET['categ'])) { echo '"'.$categorie.'"'; } ?> "<?= $annee  ?>"</h2>
         <p> <?= $fail ?> </p>
 
         <div id="flexAffiches">
