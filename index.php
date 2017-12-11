@@ -47,16 +47,39 @@ if (isset($_GET['log'])) {
 ?>
 
       <main>
+<?php
+$sql = "SELECT DISTINCT genres FROM all_movies ORDER BY genres ASC";
+$query = $pdo->prepare($sql);
+$query->execute();
+$genres = $query->fetchAll();
 
+$grandTableau = array();
+foreach ($genres as $genre) {
+  if ($genre['genres'] != '') {
+    $grandTableau[] = $genre['genres'];
+  }
+}
+$list = implode(', ',$grandTableau);
+$tab = explode(', ',$list);
+$tableau = array_unique($tab);
+array_pop($tableau);
+
+
+
+?>
         <div id="buttons">
           <a href="index.php"><button type="button" name="button"> + de films ! </button></a>
 
           <button type="button" name="button" id="hide"> Filtres  </button>
             <form id="form" class="show" action="index.php" method="post">
-              <?php   nouvelInputSQL2('Action','checkbox','categ','',$errors) ?>
-              <?php   nouveauSelect2('Année','years','???? ',$errors,$annees) ?>
-              <?php   nouveauSelect2('Popularité','notes','???? ',$errors,$notesTable) ?>
-              <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
+              <div id="genreFilm"><?php
+                foreach ($tableau as $genre) {
+                  nouvelInputSQL2($genre,'checkbox','categ','',$errors);
+                } ?>
+              </div><?php
+              nouveauSelect2('Année','years','???? ',$errors,$annees);
+              nouveauSelect2('Popularité','notes','???? ',$errors,$notesTable);
+              nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
               <input type="submit" value="Submit">
             </form>
         </div>

@@ -11,6 +11,15 @@ a {
   display: flex;
   flex-wrap: wrap;
 }
+#genreFilm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: auto;
+}
+#genreFilm div .label {
+  margin: 5px;
+}
 .affiche {
   position: relative;
   margin: 15px;
