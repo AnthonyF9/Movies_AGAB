@@ -24,8 +24,9 @@ include_once('./inc/header.php');
       die('404');
     }
 
+
+        echo '<h1 class="titrefilm">'.$movie['title'].'</h1>';
         echo '<div class="titraffiche">';
-        echo '<h1>'.$movie['title'].'</h1>';
         echo single_affiche($movie);
         echo '</div>';
         echo '<section class="detail">';
