@@ -42,7 +42,14 @@ a {
 {
   display: block;
   position: relative;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 0;
+  height: 325px;
+  width: 220px;
+}
+.titraffiche img {
+  position: relative;
+  height: 325px;
+  width: 220px;
 }
 .titrefilm
 {
@@ -52,6 +59,7 @@ a {
 .detail, .synopsis
 {
   text-align: center;
+  position: relative;
 }
 
 #buttons {
