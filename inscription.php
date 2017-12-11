@@ -103,7 +103,7 @@ if (!empty($_POST['submitted'])) {
       //Exécution de la requête0
       $query->execute();
     //Fin des requêtes
-    // header('Location: ./login.php?registration=success');
+    header('Location: ./connexion.php?registration=success');
   }
 }
 include_once('./inc/header.php');

@@ -13,6 +13,7 @@ include_once('./inc/header.php');
   $query->execute();
   $movies = $query->fetchAll();
 
+
   $sql = "SELECT DISTINCT year FROM all_movies ORDER BY year DESC";
   //
   $queryyear = $pdo->prepare($sql);
@@ -56,6 +57,7 @@ include_once('./inc/header.php');
       header('Location: ./index.php');
     } else { header ('Location: ./index.php');}
   }
+
 
 ?>
 
