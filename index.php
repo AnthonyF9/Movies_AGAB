@@ -21,19 +21,22 @@ $dates = $queryyear->fetchAll();
 
 
 
-
-foreach ($dates as $date) {
-  $annees = $date['year'];
-}
+$notesTable = array('Les plus populaires','Les moins populaires');
 
 $errors = array();
 
+if(!empty($_POST['submitfiltres'])) {
+
+
+}
 
 
 
 
 
-$notesTable = array('Les plus populaires','Les moins populaires');
+
+
+
 
 
 if (isset($_GET['log'])) {
@@ -52,12 +55,29 @@ if (isset($_GET['log'])) {
           <a href="index.php"><button type="button" name="button"> + de films ! </button></a>
 
           <button type="button" name="button" id="hide"> Filtres  </button>
-            <form id="form" class="show" action="index.php" method="post">
+
+            <form id="form" class="show" action="search.php" method="get">
               <?php   nouvelInputSQL2('Action','checkbox','categ','',$errors) ?>
-              <?php   nouveauSelect2('Année','years','???? ',$errors,$annees) ?>
-              <?php   nouveauSelect2('Popularité','notes','???? ',$errors,$notesTable) ?>
+              <div>
+                <label class="label" for="years">Année : </label>
+                <select name="years">
+                  <?php foreach ($dates as $date) { ?>
+                    <option <?php if(!empty($_GET['years'])) { if($value == $_GET['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
+                    </option>
+                  <?php } ?>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="popu">Popularité : </label>
+                <select name="popu">
+                  <?php foreach ($notesTable as $key => $value) { ?>
+                    <option value="<?php echo $key; ?>"<?php if(!empty($_POST['popu'])) { if($_POST['popu'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
+                    </option>
+                  <?php } ?>
+                </select>
+              </div>
               <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
-              <input type="submit" value="Submit">
+              <input type="submit" name="submitfiltres" value="Submit" formnovalidate>
             </form>
         </div>
 
