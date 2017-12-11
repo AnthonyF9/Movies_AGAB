@@ -21,6 +21,20 @@ if (!empty($_GET['movie'])) {
   header('Location: ./404.php');
 }
 
+if (!empty($_GET['bouton'])) {
+  $button = '';
+  $sql = "SELECT * FROM notes AS n RIGHT JOIN all_movies AS m ON m.id = n.id_movie WHERE m.slug = :movie";
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':movie', $slug, PDO::PARAM_STR);
+  $query->execute();
+  $note = $query->fetch();
+  if(!empty($note['movie_id'])){
+    $button = 'Retrait';
+  }else {
+    $button = 'A voir';
+  }
+}
+
 include_once('./inc/header.php');
 ?>
 
@@ -49,7 +63,8 @@ include_once('./inc/header.php');
 
     ?>
 
-    <input type="submit" name="bouton" value="">
+    <input type="submit" name="bouton" value="
+    <?php echo $button; ?>">
 
   </main>
 

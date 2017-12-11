@@ -27,7 +27,15 @@ include_once('./inc/header.php');
     <?php
     echo '<ul>';
     foreach ($lists as $key => $list) {
+<<<<<<< HEAD
       echo '<li>'.$list['title'].'</li>';
+=======
+      echo '<li>';
+      echo list_affiche($list,'id','title','movie');
+      echo '<br/>';
+      echo $list['title'];
+      echo '</li>';
+>>>>>>> 181842735a2165f4467b5550ab1788178badf5db
     }
     echo '</ul>';
     ?>
