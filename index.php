@@ -14,27 +14,21 @@ $query->execute();
 $movies = $query->fetchAll();
 
 $sql = "SELECT DISTINCT year FROM all_movies ORDER BY year DESC";
-//
 $queryyear = $pdo->prepare($sql);
 $queryyear->execute();
 $dates = $queryyear->fetchAll();
 
-
-
 $notesTable = array('Les plus populaires','Les moins populaires');
-
 $errors = array();
-
 if(!empty($_POST['submitfiltres'])) {
 
 
 }
-
+//Requête pour les genres
 $sql = "SELECT DISTINCT genres FROM all_movies ORDER BY genres ASC";
 $query = $pdo->prepare($sql);
 $query->execute();
 $genres = $query->fetchAll();
-
 $grandTableau = array();
 foreach ($genres as $genre) {
   if ($genre['genres'] != '') {
@@ -45,11 +39,7 @@ $list = implode(', ',$grandTableau);
 $tab = explode(', ',$list);
 $tableau = array_unique($tab);
 array_pop($tableau);
-
-
-
-
-
+//Deconnexion
 if (isset($_GET['log'])) {
   if($_GET['log'] == 'out') {
     session_destroy();
@@ -57,7 +47,6 @@ if (isset($_GET['log'])) {
     header('Location: ./index.php');
   } else { header ('Location: ./index.php');}
 }
-
 ?>
 
       <main>
@@ -77,6 +66,7 @@ if (isset($_GET['log'])) {
               <div>
                 <label class="label" for="years">Année : </label>
                 <select name="years">
+                  <option value="">Toutes</option>
                   <?php foreach ($dates as $date) { ?>
                     <option <?php if(!empty($_GET['years'])) { if($value == $_GET['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
                     </option>
