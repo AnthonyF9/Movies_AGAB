@@ -12,10 +12,13 @@ if (!empty($_GET['movie'])) {
   $query->bindValue(':movie', $slug, PDO::PARAM_STR);
   $query->execute();
   $movie = $query->fetch();
-// }elseif(empty()){
-
+  if (!empty($movie['slug'])) {
+    //pas d'erreur
+  }else {
+    header('Location: ./404.php');
+  }
 }else{
-  die('404');
+  header('Location: ./404.php');
 }
 
 include_once('./inc/header.php');
@@ -45,6 +48,8 @@ include_once('./inc/header.php');
         echo '</section>';
 
     ?>
+
+    <input type="submit" name="bouton" value="">
 
   </main>
 

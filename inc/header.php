@@ -19,7 +19,8 @@
               <li><a href="./index.php">Accueil</a></li>
               <?php
               if (is_logged() == true) { ?>
-                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span><span><a href="./index.php?log=out">Se déconnecter</a></span></li><?php
+                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span><span><a href="./index.php?log=out">Se déconnecter</a></span></li>
+                <li><a href="./a-voir.php">Votre liste</a></li><?php
               }
               else { ?>
                 <li><a href="./inscription.php">Inscription</a></li>
