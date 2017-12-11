@@ -3,7 +3,7 @@ $title = 'Accueil';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
 // session_start();
-include_once('./cookies.php');
+include_once('./cookies.php'); // pdo, session start et fonctions inside
 include_once('./inc/header.php');
 
 
@@ -13,18 +13,24 @@ $query = $pdo->prepare($sql);
 $query->execute();
 $movies = $query->fetchAll();
 
-$sql = "SELECT year FROM all_movies ORDER BY year DESC";
+$sql = "SELECT DISTINCT year FROM all_movies ORDER BY year DESC";
 //
 $queryyear = $pdo->prepare($sql);
 $queryyear->execute();
-$years = $queryyear->fetchAll();
+$dates = $queryyear->fetchAll();
+
+
+
+
+foreach ($dates as $date) {
+  $annees = $date['year'];
+}
 
 $errors = array();
-$yearsTable = array('2000','2001');
 
-for ($i=0; $i < count($years) ; $i++) {
-  
-}
+
+
+
 
 
 $notesTable = array('Les plus populaires','Les moins populaires');
@@ -47,10 +53,10 @@ if (isset($_GET['log'])) {
 
           <button type="button" name="button" id="hide"> Filtres  </button>
             <form id="form" class="show" action="index.php" method="post">
-              <?php   nouvelInputSQL2($textLabel='Action',$typeInput='checkbox',$nomInput='categ',$placeholder='',$errors) ?>
-              <?php   nouveauSelect2($textLabel='Année',$nomSelect='years',$placeholder='???? ',$errors,$yearsTable) ?>
-              <?php   nouveauSelect2($textLabel='Popularité',$nomSelect='notes',$placeholder='???? ',$errors,$notesTable) ?>
-              <?php   nouvelInputSQL2($textLabel='Recherche',$typeInput='text',$nomInput='search',$placeholder='Rechercher un film',$errors) ?>
+              <?php   nouvelInputSQL2('Action','checkbox','categ','',$errors) ?>
+              <?php   nouveauSelect2('Année','years','???? ',$errors,$annees) ?>
+              <?php   nouveauSelect2('Popularité','notes','???? ',$errors,$notesTable) ?>
+              <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
               <input type="submit" value="Submit">
             </form>
         </div>

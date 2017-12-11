@@ -12,9 +12,7 @@
       <!-- Mon script -->
       <script src="./assets/javascript/main.js" type="text/javascript"></script>
       <script>
-              $( "#hide" ).click(function() {
-        $( "#form" ).toggleClass( "show" );
-        });
+            
       </script>
   </body>
 </html>
