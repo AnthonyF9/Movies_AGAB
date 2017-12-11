@@ -5,7 +5,10 @@ $title = 'Votre liste';
 include_once('./cookies.php'); //pdo, fonctions et sesions_start apppelés dedans
 
 if(is_logged() == true){
-  $sql = "SELECT * FROM notes AS n LEFT JOIN users ON users.id = n.id_user, all_movies ON all_movies.id = n.id_movie ORDER BY n.created_at DESC";
+  $sql = "SELECT a.title AS title
+          FROM notes AS n
+          LEFT JOIN all_movies AS a
+          ON a.id = n.id_movie ORDER BY n.created_at DESC";
   $query = $pdo->prepare($sql);
   $query->execute();
   $lists = $query->fetchAll();
@@ -20,10 +23,15 @@ include_once('./inc/header.php');
   <main class="list">
 
     <?php
+    echo '<ul>';
     foreach ($lists as $key => $list) {
-      echo single_affiche($list);
+      echo '<li>';
+      // echo single_affiche($list);
+      echo '<br/>';
       echo $list['title'];
+      echo '</li>';
     }
+    echo '</ul>';
     ?>
 
   </main>

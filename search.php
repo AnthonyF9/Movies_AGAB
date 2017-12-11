@@ -7,23 +7,43 @@ include_once('./cookies.php'); // pdo, session start et fonctions inside
 include_once('./inc/header.php');
 
 
-if (!empty($_GET['search']))  {
-  $motclef = $_GET['search'];
+if (!empty($_GET['submitfiltres']))  {
 
   $sql = "SELECT * FROM all_movies
-          WHERE 1 = 1
-          AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
+          WHERE 1 = 1";
 
-          if($_GET['years']) {
+          if(!empty($_GET['years'])) {
               $annee = $_GET['years'];
 
               $sql .= " AND year = :annee";
+
           }
 
+          if(!empty($_GET['categ'])) {
+              $categorie = $_GET['categ'];
+              $sql .= " AND genres LIKE :categorie ";
+          }
+
+
+
+
+          // if(!empty($_GET['search'])) {
+          //     $motclef = $_GET['search'];
+          //
+          //     $sql .= "AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
+          //
+          // }
+
+
     $query = $pdo->prepare($sql);
-    $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
+    // $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
+    if (!empty($_GET['categ'])) {
+      $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_INT);
+    }
+    $query->bindValue(':annee',$annee,PDO::PARAM_INT);
     $query->execute();
     $movies = $query->fetchAll();
+
 
     if(empty($movies)) {
       $fail = 'Aucun résultats pour cette recherche';
@@ -55,7 +75,7 @@ if (isset($_GET['log'])) {
 
       <main>
 
-        <h2 class="titlesearch"> Resultats de la recherche "<?= $motclef  ?>" "<?= $annee  ?>"</h2>
+        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_GET['categ'])) { echo '"'.$categorie.'"'; } ?> "<?= $annee  ?>"</h2>
         <p> <?= $fail ?> </p>
 
         <div id="flexAffiches">
@@ -74,7 +94,7 @@ if (isset($_GET['log'])) {
         }
         ?>
         </div>
-         ?>
+
 
 
       </main>
