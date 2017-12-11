@@ -7,46 +7,58 @@ include_once('./cookies.php'); // pdo, session start et fonctions inside
 include_once('./inc/header.php');
 
 
-$sql = "SELECT * FROM all_movies ORDER BY rand() LIMIT 100";
-//
-$query = $pdo->prepare($sql);
-$query->execute();
-$movies = $query->fetchAll();
-
-$sql = "SELECT DISTINCT year FROM all_movies ORDER BY year DESC";
-$queryyear = $pdo->prepare($sql);
-$queryyear->execute();
-$dates = $queryyear->fetchAll();
-
-$notesTable = array('Les plus populaires','Les moins populaires');
-$errors = array();
-if(!empty($_POST['submitfiltres'])) {
+  $sql = "SELECT * FROM all_movies ORDER BY rand() LIMIT 100";
+  //
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $movies = $query->fetchAll();
 
 
-}
-//Requête pour les genres
-$sql = "SELECT DISTINCT genres FROM all_movies ORDER BY genres ASC";
-$query = $pdo->prepare($sql);
-$query->execute();
-$genres = $query->fetchAll();
-$grandTableau = array();
-foreach ($genres as $genre) {
-  if ($genre['genres'] != '') {
-    $grandTableau[] = $genre['genres'];
+  $sql = "SELECT DISTINCT year FROM all_movies ORDER BY year DESC";
+  //
+  $queryyear = $pdo->prepare($sql);
+  $queryyear->execute();
+  $dates = $queryyear->fetchAll();
+
+
+
+  $notesTable = array('Les plus populaires','Les moins populaires');
+
+  $errors = array();
+
+  if(!empty($_POST['submitfiltres'])) {
+
+
   }
-}
-$list = implode(', ',$grandTableau);
-$tab = explode(', ',$list);
-$tableau = array_unique($tab);
-array_pop($tableau);
-//Deconnexion
-if (isset($_GET['log'])) {
-  if($_GET['log'] == 'out') {
-    session_destroy();
-    setcookie('userck', '', time()-3600, '/', 'localhost', false, true);
-    header('Location: ./index.php');
-  } else { header ('Location: ./index.php');}
-}
+
+  $sql = "SELECT DISTINCT genres FROM all_movies ORDER BY genres ASC";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $genres = $query->fetchAll();
+
+  $grandTableau = array();
+  foreach ($genres as $genre) {
+    if ($genre['genres'] != '') {
+      $grandTableau[] = $genre['genres'];
+    }
+  }
+  $list = implode(', ',$grandTableau);
+  $tab = explode(', ',$list);
+  $tableau = array_unique($tab);
+  array_pop($tableau);
+
+
+
+
+  if (isset($_GET['log'])) {
+    if($_GET['log'] == 'out') {
+      session_destroy();
+      setcookie('userck', '', time()-3600, '/', 'localhost', false, true);
+      header('Location: ./index.php');
+    } else { header ('Location: ./index.php');}
+  }
+
+
 ?>
 
       <main>
@@ -59,8 +71,11 @@ if (isset($_GET['log'])) {
 
             <form id="form" class="show" action="search.php" method="get">
               <div id="genreFilm"><?php
-                foreach ($tableau as $genre) {
-                  nouvelInputSQL2($genre,'checkbox','categ','',$errors);
+                foreach ($tableau as $genre) { ?>
+                  <div>
+                    <label class="label" for="categ"> <?= $genre ?> : </label>
+                    <input class="input" type="checkbox" name="categ" placeholder="" value="<?= $genre ?>">
+                  </div> <?php
                 } ?>
               </div>
               <div>

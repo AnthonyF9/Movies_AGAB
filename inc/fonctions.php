@@ -44,6 +44,17 @@ function nouvelInputSQL2($textLabel='Titre',$typeInput='text',$nomInput='title',
     <?php if (!empty($errors[$nomInput])) { echo $errors[$nomInput]; } ?>
   </div><?php
 }
+function nouvelInputSQLget($textLabel='Titre',$typeInput='text',$nomInput='title',$placeholder='Titre',$errors)
+{ ?>
+  <div>
+    <label class="label" for="<?php echo $nomInput ?>"><?php echo $textLabel ?> : </label>
+    <input class="input" type="<?php echo $typeInput ?>" name="<?php echo $nomInput ?>" placeholder="<?php echo $placeholder ?>" value="<?php if(!empty($_GET[$nomInput])) { echo $_GET[$nomInput]; } ?>">
+  </div>
+  <div class="erreur pform">
+    <label class="label"></label>
+    <?php if (!empty($errors[$nomInput])) { echo $errors[$nomInput]; } ?>
+  </div><?php
+}
 function nouveauTextareaSQL($textLabel='Titre',$nomTextarea='title',$placeholder='Titre',$errors)
 { ?>
   <div>

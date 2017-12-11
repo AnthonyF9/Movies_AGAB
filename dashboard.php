@@ -5,7 +5,7 @@ session_start();
 ?>
 <?php
 
-$sql = "SELECT * FROM movies_full
+$sql = "SELECT * FROM all_movies
         ORDER BY created DESC";
 
 $stmt = $pdo->prepare($sql);
