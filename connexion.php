@@ -63,7 +63,7 @@ if(!empty($_POST['submitted'])) {
 
 include_once('./inc/header.php');
 ?>
-  <form method="POST" action="connexion.php" id="formconnexion">
+  <form method="POST" action="connexion.php" id="formconnexion" class="main login">
 		<?php nouvelInputSQL($textLabel='pseudo',$typeInput='text',$nomInput='pseudo',$placeholder='pseudo',$errors);
 		nouvelInputSQL($textLabel='Entrez votre mot de passe',$typeInput='password',$nomInput='password',$placeholder='Votre mot de passe',$errors); ?>
 		<div class="checkbox">
