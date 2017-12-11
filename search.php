@@ -7,23 +7,26 @@ include_once('./cookies.php'); // pdo, session start et fonctions inside
 include_once('./inc/header.php');
 
 
-if (!empty($_GET['search']))  {
-  $motclef = $_GET['search'];
+if (!empty($_GET['submitfiltres']))  {
 
   $sql = "SELECT * FROM all_movies
-          WHERE 1 = 1
-          AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
+          WHERE 1 = 1";
 
-          if($_GET['years']) {
+          if(!empty($_GET['years'])) {
               $annee = $_GET['years'];
 
-              $sql .= " AND year = :annee";
+              $sql .= " AND year = $annee";
+
           }
 
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
-    $query->execute();
-    $movies = $query->fetchAll();
+          // if(!empty($_GET['search'])) {
+          //     $motclef = $_GET['search'];
+          //
+          //     $sql .= "AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
+          //
+          // }
+
+
 
     if(empty($movies)) {
       $fail = 'Aucun résultats pour cette recherche';
@@ -33,7 +36,11 @@ if (!empty($_GET['search']))  {
   }
 
 
-
+  $query = $pdo->prepare($sql);
+  // $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
+  // $query->bindValue(':annee',$annee,PDO::PARAM_INT);
+  $query->execute();
+  $movies = $query->fetchAll();
 
 
 
