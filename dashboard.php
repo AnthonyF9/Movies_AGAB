@@ -1,36 +1,24 @@
-
-
-<?php include('inc/pdo.php');
-session_start();
-?>
 <?php
+$title = 'Accueil';
+// include_once('./inc/pdo.php');
+// include_once('./inc/fonctions.php');
+// session_start();
+include_once('./cookies.php'); // pdo, session start et fonctions inside
+include_once('./inc/headerback.php');
+if (is_admin() == true) {
 
-$sql = "SELECT * FROM all_movies
-        ORDER BY created DESC";
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$movies = $stmt->fetchAll();
+}
+else {
+  header('Location: ./index.php');
+}
 ?>
 
-<?php include('inc/headerback.php'); ?>
-<a href="nwpost.php"></a>
+      <main>
 
-  <table class="table table-sm">
+
+
+      </main>
+
 <?php
-    foreach ($movies as $movie) {
-
-       echo '<tr><td>'. $movie['id'] .'</td>';
-       echo '<td>'. $movie['title'] . '</td>';
-       echo '<td>'. $movie['year'] . '</td>';
-       echo '<td>'. $movie['rating'] . '</td>';
-       echo '<td>'. $movie ['genres'] .'</td>';
-        echo '<td>'. $movie['created'] .'</td>';
-        echo '<td>'. $movie['modified'] .'</td>
-<td><a href=".php?id='. $movie['id'].'" class="btn btn-success">Edit</a></td>
-       </tr>';
-
-     }
-  ?>
-</table>
-<?php include('inc/footerback.php'); ?>
+include_once('./inc/footer.php');
+?>
