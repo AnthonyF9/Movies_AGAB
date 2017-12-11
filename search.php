@@ -18,14 +18,16 @@ if (!empty($_GET['submitfiltres']))  {
               $sql .= " AND year = :annee";
           }
 
-
-
           if(!empty($_GET['categ'])) {
               $categorie = $_GET['categ'];
               $sql .= " AND genres LIKE :categorie ";
           }
 
-
+          // EN COURS
+          if(!empty($_GET['popu'])) {
+              $popularite = $_GET['popu'];
+              $sql .= " AND popularity ORDER BY popularity DESC ";
+          }
 
 
           // if(!empty($_GET['search'])) {
