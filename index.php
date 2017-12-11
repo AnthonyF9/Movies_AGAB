@@ -81,7 +81,7 @@ include_once('./inc/header.php');
               <div>
                 <label class="label" for="years">Année : </label>
                 <select name="years">
-                  <option value="all"> All </option>
+                  <option value="All"> All </option>
                   <?php foreach ($dates as $date) { ?>
                     <option <?php if(!empty($_GET['years'])) { if($value == $_GET['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
                     </option>
@@ -116,7 +116,7 @@ include_once('./inc/header.php');
         foreach ($movies as $movie) {
           if (file_exists('posters/' . $movie['id'] . '.jpg')) { ?>
             <div class="affiche">
-              <a href="./details.php?movie=<?= $sql['genres'], $sql['all_movies'], $movie['slug'] ?>">  <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/> </a>
+              <a href="./details.php?movie=<?= $movie['slug'] ?>">  <img class="img" src="posters/<?=$movie['id'] ?>.jpg" alt="<?= $movie['title'] ?>"/> </a>
             </div> <?php
           }
           else { ?>
