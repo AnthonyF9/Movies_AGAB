@@ -40,14 +40,14 @@ a {
 }
 .titraffiche
 {
-  text-align: center;
+  display: block;
   position: relative;
-  margin-left: 38%;
-  margin-right: 38%;
+  margin: 0 auto 0 auto;
 }
-.titraffiche h1
+.titrefilm
 {
   font-size: 2.5em;
+  text-align: center;
 }
 .detail, .synopsis
 {
