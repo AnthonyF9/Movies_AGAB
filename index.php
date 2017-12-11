@@ -22,6 +22,9 @@ $years = $queryyear->fetchAll();
 $errors = array();
 $yearsTable = array('2000','2001');
 
+for ($i=0; $i < count($years) ; $i++) {
+  
+}
 
 
 $notesTable = array('Les plus populaires','Les moins populaires');
