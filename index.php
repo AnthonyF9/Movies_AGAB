@@ -81,7 +81,7 @@ include_once('./inc/header.php');
               <div>
                 <label class="label" for="years">Année : </label>
                 <select name="years">
-                  <option value="all"> All </option>
+                  <option value="All"> All </option>
                   <?php foreach ($dates as $date) { ?>
                     <option <?php if(!empty($_GET['years'])) { if($value == $_GET['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
                     </option>
