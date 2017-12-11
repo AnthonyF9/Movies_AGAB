@@ -123,7 +123,7 @@ include_once('./inc/header.php');
                 nouvelInputSQL($textLabel='Entrez à nouveau votre mot de passe',$typeInput='password',$nomInput='password2',$placeholder='Votre mot de passe',$errors);
                 //Input submit
                 inputSubmit();
-                if (count($errors) == 0) { ?><p>Inscription réussie</p><?php }
+                if (!empty($_POST['submitted'])) { if (count($errors) == 0) { ?><p>Inscription réussie</p><?php } }
               ?>
             </form>
 
