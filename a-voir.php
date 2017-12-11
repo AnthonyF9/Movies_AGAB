@@ -3,15 +3,17 @@ $title = 'Votre liste';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
 include_once('./cookies.php'); //pdo, fonctions et sesions_start apppelés dedans
-
 if(is_logged() == true){
-  $sql = "SELECT a.title AS title, n.id_movie AS id, a.slug AS movie, n.id_user = user
+  $idUser = $_SESSION['user']['id'];
+  $sql = "SELECT n.id_movie,n.id_user,n.note,a.title
           FROM notes AS n
           LEFT JOIN all_movies AS a
-          ON a.id = n.id_movie ORDER BY n.created_at DESC";
+          ON n.id_movie = a.id
+          WHERE n.note IS NULL AND id_user=$idUser";
   $query = $pdo->prepare($sql);
   $query->execute();
   $lists = $query->fetchAll();
+  debug($lists);
 }else{
   header('Location: ./index.php');
 }
