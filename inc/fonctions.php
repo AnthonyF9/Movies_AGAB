@@ -158,5 +158,18 @@ function single_affiche($movie)
   }
   return $return;
 }
+function list_affiche($movie,$index1,$index2,$index3)
+{
+  $image = $movie[$index1];
+  $alt = $movie[$index2];
+  $link = $movie[$index3];
+
+  if (file_exists('posters/'.$image.'.jpg')) {
+    $return = '<div class="img"><a href="details.php?movie='.$link.'"><img src="posters/'.$image.'.jpg" alt="'.$alt.'"></a></div>';
+  } else {
+    $return = '<div class="img" class="sansimage"><a class="introuvable" href="details.php?movie='.$link.'">poster introuvable</a></div>';
+  }
+  return $return;
+}
 
 ?>
