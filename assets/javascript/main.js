@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Toggle Filtres
-      $( "#hide" ).click(function() {
+  $( "#hide" ).click(function() {
     $( "#form" ).toggleClass( "show" );
-    });
+  });
 });

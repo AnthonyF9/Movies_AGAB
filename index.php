@@ -30,10 +30,21 @@ if(!empty($_POST['submitfiltres'])) {
 
 }
 
+$sql = "SELECT DISTINCT genres FROM all_movies ORDER BY genres ASC";
+$query = $pdo->prepare($sql);
+$query->execute();
+$genres = $query->fetchAll();
 
-
-
-
+$grandTableau = array();
+foreach ($genres as $genre) {
+  if ($genre['genres'] != '') {
+    $grandTableau[] = $genre['genres'];
+  }
+}
+$list = implode(', ',$grandTableau);
+$tab = explode(', ',$list);
+$tableau = array_unique($tab);
+array_pop($tableau);
 
 
 
@@ -56,8 +67,13 @@ if (isset($_GET['log'])) {
 
           <button type="button" name="button" id="hide"> Filtres  </button>
 
+
             <form id="form" class="show" action="search.php" method="get">
-              <?php   nouvelInputSQL2('Action','checkbox','categ','',$errors) ?>
+              <div id="genreFilm"><?php
+                foreach ($tableau as $genre) {
+                  nouvelInputSQL2($genre,'checkbox','categ','',$errors);
+                } ?>
+              </div>
               <div>
                 <label class="label" for="years">Année : </label>
                 <select name="years">
@@ -78,6 +94,7 @@ if (isset($_GET['log'])) {
               </div>
               <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
               <input type="submit" name="submitfiltres" value="Submit" formnovalidate>
+
             </form>
         </div>
 
