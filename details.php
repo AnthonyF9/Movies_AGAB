@@ -1,30 +1,29 @@
 <?php
-$title = 'Accueil';
+$title = 'Detail';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
 // session_start();
 include_once('./cookies.php');
+
+if (!empty($_GET['movie'])) {
+  $slug = $_GET['movie'];
+  $sql = "SELECT * FROM all_movies WHERE slug = :movie";
+  $query = $pdo->prepare($sql);
+  $query->bindValue(':movie', $slug, PDO::PARAM_STR);
+  $query->execute();
+  $movie = $query->fetch();
+// }elseif(empty()){
+
+}else{
+  die('404');
+}
+
 include_once('./inc/header.php');
 ?>
-
-
 
   <main class="affiche">
 
     <?php
-
-    //Attention : nom de variables et de fonctions provisoire ^^
-    if (!empty($_GET['movie'])) {
-    $slug = $_GET['movie'];
-    $sql = "SELECT * FROM all_movies WHERE slug = :movie";
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':movie', $slug, PDO::PARAM_STR);
-    $query->execute();
-    $movie = $query->fetch();
-    }else{
-      die('404');
-    }
-
 
         echo '<h1 class="titrefilm">'.$movie['title'].'</h1>';
         echo '<div class="titraffiche">';
