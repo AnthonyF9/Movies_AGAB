@@ -20,7 +20,6 @@ $stmt->execute();
 $movies = $stmt->fetchAll();
 ?>
 
-<?php include('inc/headerback.php'); ?>
 <a href="details.php"></a>
 
   <table class="table">
