@@ -9,8 +9,6 @@ if (is_admin() == true) {
 else {
   header('Location: ./index.php');
 }
-?>
-<?php
 
 $sql = "SELECT * FROM all_movies
         ORDER BY created DESC";
@@ -19,8 +17,8 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $movies = $stmt->fetchAll();
 ?>
-<main>
-  <div id="wrapper">
+
+  <main>
     <div id="alpha">
       <table>
         <tr>
@@ -45,8 +43,10 @@ $movies = $stmt->fetchAll();
          ?>
       </table>
     </div>
-  </div>
-</main>
+  </main>
+
+
+
 
 
 <?php include('inc/footerback.php'); ?>

@@ -20,5 +20,5 @@
     </nav>
   </div>
   <h2><?php  ?></h2>
-
-</hearder>
+</header>
+<div id="wrapper">
