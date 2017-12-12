@@ -22,7 +22,7 @@ include_once('./inc/header.php');
 
 
 
-  $notesTable = array('Les plus populaires','Les moins populaires');
+  $popus = array('Les plus populaires','Les moins populaires');
 
   $errors = array();
 
@@ -81,7 +81,7 @@ include_once('./inc/header.php');
               <div>
                 <label class="label" for="years">Année : </label>
                 <select name="years">
-                  <option value="all"> All </option>
+                  <option value="All"> All </option>
                   <?php foreach ($dates as $date) { ?>
                     <option <?php if(!empty($_GET['years'])) { if($value == $_GET['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
                     </option>
@@ -91,8 +91,8 @@ include_once('./inc/header.php');
               <div>
                 <label class="label" for="popu">Popularité : </label>
                 <select name="popu">
-                  <?php foreach ($notesTable as $key => $value) { ?>
-                    <option value="<?php echo $key; ?>"<?php if(!empty($_POST['popu'])) { if($_POST['popu'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
+                  <?php foreach ($popus as $popu) { ?>
+                    <option value="<?php echo $key; ?>"<?php if(!empty($_GET['popu'])) { if($_GET['popu'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $popu; ?></option>
                     </option>
                   <?php } ?>
                 </select>
