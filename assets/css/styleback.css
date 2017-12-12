@@ -150,10 +150,12 @@ a {
   color: red;
 }
 
-table {
+table td, th {
   border-collapse: collapse;
-  border: 1px solid white;
+  border: 1px solid black;
+  padding:6px;
 }
+
 footer {
   min-height: 50px;
   background-color: #2C3E50;

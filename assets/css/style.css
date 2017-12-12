@@ -1,24 +1,128 @@
+*
+{
+  margin: 0;
+  padding: 0;
+}
+#wrapper
+{
+  width: 100%;
+}
 body {
   background-color: #333333;
 }
 
-a {
+/*header*/
+
+header
+{
+  margin: auto;
+  width: 100%;
+  background-color: #404040;
+  border: #7f7f7f 5px solid;
+  color: #bfbfbf;
+  height: 260px;
+}
+header h1
+{
+  font-size: 5em;
+  line-height: 150px;
+  font-family: 'Monoton', cursive;
+  text-align: center;
+}
+nav
+{
+  width: 100%;
+  border-top: #7f7f7f 5px solid;
+  border-bottom: #7f7f7f 5px solid;
+  text-align: center;
+}
+nav ul
+{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+nav ul li
+{
+  display: block;
+  margin: 0 5px 0 5px;
+}
+header h2
+{
+  font-size: 3em;
+  text-align: center;
+}
+a
+{
   color: red;
+}
+.hello
+{
+  color: orange;
+}
+.flex-row
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 5px 0 5px;
+}
+.flex-column
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*main*/
+main
+{
+  width: 100%;
+  max-width: 1500px;
+  min-width: 800px;
+  margin: auto;
+}
+button, .validfiltre
+{
+  background-color: #404040;
+  border: #7f7f7f 2.5px solid;
+  border-radius: 25px;
+  color: #bfbfbf;
+  padding: 2.5px;
+  margin-top: 10px;
+}
+.validfiltre
+{
+  color: orange;
+}
+#form
+{
+  background-color: #404040;
+  border: #7f7f7f 2.5px solid;
+  border-radius: 25px;
+  color: #bfbfbf;
+  padding: 2.5px;
+  width: 80%;
+  margin: 10px 10% 0 10%;
 }
 
 #flexAffiches{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 #genreFilm {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
   margin: auto;
+  justify-content: center;
 }
 #genreFilm div .label {
   margin: 5px;
+  width: 100%;
 }
 .affiche {
   position: relative;
@@ -64,15 +168,30 @@ a {
 {
   font-size: 2.5em;
   text-align: center;
+  font-weight: bold;
+  color: #bfbfbf;
 }
 .detail
 {
-  margin-top: 20px;;
+  margin: 20px 10% 0 10%;
+  background-color: #404040;
+  border: #7f7f7f 5px solid;
+  border-radius: 25px;
+  color: #bfbfbf;
 }
 .detail, .synopsis
 {
+  margin: 20px 10% 0 10%;
   text-align: center;
   position: relative;
+}
+.synopsis
+{
+  background-color: #404040;
+  border: #7f7f7f 5px solid;
+  border-radius: 25px;
+  padding: 5px 5px 5px 5px;
+  color: #bfbfbf;
 }
 
 #buttons {
@@ -92,6 +211,7 @@ form.main {
   width: 90%;
   margin: auto;
   position: relative;
+  color: #bfbfbf;
 }
 form.main.login {
   width: 53%;
@@ -166,10 +286,18 @@ form.main div input[type="submit"] {
   display: block;
   width: 50.3%;
   height: 30px;
-  background: lightcoral;
-  padding: 0 2px 0 0;
+  background-color: #404040;
+  border: #7f7f7f 2.5px solid;
+  border-radius: 25px;
+  color: #bfbfbf;
+  padding: 2.5px;
   position: relative;
 }
 form.main.login div input[type="submit"] {
   width: 30.3%;
+  background-color: #404040;
+  border: #7f7f7f 2.5px solid;
+  border-radius: 25px;
+  color: #bfbfbf;
+  padding: 2.5px;
 }

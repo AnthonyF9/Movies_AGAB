@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/default.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
   </head>
   <body>
     <div id="wrapper">
@@ -21,11 +22,13 @@
               if (is_admin() == true) { ?>
                 <li><a href="./a-voir.php">Votre liste</a></li>
                 <li><a href="./dashboard.php">Panneau de contrôle</a></li>
-                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span><span><a href="./index.php?log=out">Se déconnecter</a></span></li><?php
+                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span></li>
+                <li><span><a href="./index.php?log=out">Se déconnecter</a></span></li><?php
               }
               elseif (is_logged() == true) { ?>
                 <li><a href="./a-voir.php">Votre liste</a></li>
-                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span><span><a href="./index.php?log=out">Se déconnecter</a></span></li><?php
+                <li><span class="hello">Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span></li>
+                <li><span><a href="./index.php?log=out">Se déconnecter</a></span></li><?php
               }
               else { ?>
                 <li><a href="./inscription.php">Inscription</a></li>
