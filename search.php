@@ -7,31 +7,36 @@ include_once('./cookies.php'); // pdo, session start et fonctions inside
 include_once('./inc/header.php');
 
 
-if (!empty($_GET['submitfiltres']))  {
+if (!empty($_POST['submitfiltres']))  {
 
 
   $sql = "SELECT * FROM all_movies
           WHERE 1 = 1";
 
-          if(is_numeric($_GET['years'])) {
-              $annee = $_GET['years'];
+          if(is_numeric($_POST['years'])) {
+              $annee = $_POST['years'];
               $sql .= " AND year = :annee";
           }
 
-          if(!empty($_GET['categ'])) {
-              $categorie = $_GET['categ'];
+          if(!empty($_POST['categ'])) {
+              $categorie = $_POST['categ'];
               $sql .= " AND genres LIKE :categorie ";
           }
 
           // EN COURS
-          if(!empty($_GET['popu'])) {
-              $popularite = $_GET['popu'];
-              $sql .= " AND popularity ORDER BY popularity DESC ";
+          if(!empty($_POST['popu'])) {
+              $popularite = $_POST['popu'];
+              if ($popularite == 'Les plus populaires') {
+                $sql .= " AND 2 = 2 ORDER BY popularity DESC ";
+              } else {
+                $sql .= " AND 2 = 2 ORDER BY popularity ASC ";
+              }
+
           }
 
 
-          // if(!empty($_GET['search'])) {
-          //     $motclef = $_GET['search'];
+          // if(!empty($_POST['search'])) {
+          //     $motclef = $_POST['search'];
           //
           //     $sql .= "AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
           //
@@ -40,10 +45,10 @@ if (!empty($_GET['submitfiltres']))  {
 
     $query = $pdo->prepare($sql);
     // $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
-    if (!empty($_GET['categ'])) {
+    if (!empty($_POST['categ'])) {
       $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_INT);
     }
-    if (!empty($_GET['years']) && is_numeric($_GET['years'])) {
+    if (!empty($_POST['years']) && is_numeric($_POST['years'])) {
     $query->bindValue(':annee',$annee,PDO::PARAM_INT);
     }
     $query->execute();
@@ -58,19 +63,21 @@ if (!empty($_GET['submitfiltres']))  {
   }
 
 
-if (isset($_GET['log'])) {
-  if($_GET['log'] == 'out') {
+if (isset($_POST['log'])) {
+  if($_POST['log'] == 'out') {
     session_destroy();
     setcookie('userck', '', time()-3600, '/', 'localhost', false, true);
     header('Location: ./index.php');
   } else { header ('Location: ./index.php');}
 }
 
+
+
 ?>
 
       <main>
 
-        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_GET['categ'])) { echo '"'.$categorie.'"'; } ?> <?php if (!empty($_GET['years']) && is_numeric($_GET['years'])) { echo '"'.$annee.'"'; } ?></h2>
+        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_POST['categ'])) { echo '"'.$categorie.'"'; } ?> <?php if (!empty($_POST['years']) && is_numeric($_POST['years'])) { echo '"'.$annee.'"'; } ?></h2>
         <p> <?= $fail ?> </p>
 
         <div id="flexAffiches">

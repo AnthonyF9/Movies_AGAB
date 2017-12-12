@@ -24,6 +24,7 @@ include_once('./inc/header.php');
 
   $popus = array('Les plus populaires','Les moins populaires');
 
+
   $errors = array();
 
   if(!empty($_POST['submitfiltres'])) {
@@ -58,7 +59,7 @@ include_once('./inc/header.php');
     } else { header ('Location: ./index.php');}
   }
 
-
+// METHODE POST A FAIRE PARTOUT
 ?>
 
       <main>
@@ -69,7 +70,7 @@ include_once('./inc/header.php');
           <button type="button" name="button" id="hide"> Filtres  </button>
 
 
-            <form id="form" class="show" action="search.php" method="get">
+            <form id="form" class="show" action="search.php" method="post">
               <div id="genreFilm"><?php
                 foreach ($tableau as $genre) { ?>
                   <div>
@@ -83,7 +84,7 @@ include_once('./inc/header.php');
                 <select name="years">
                   <option value="All"> All </option>
                   <?php foreach ($dates as $date) { ?>
-                    <option <?php if(!empty($_GET['years'])) { if($value == $_GET['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
+                    <option <?php if(!empty($_POST['years'])) { if($value == $_POST['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
                     </option>
                   <?php } ?>
                 </select>
@@ -92,7 +93,7 @@ include_once('./inc/header.php');
                 <label class="label" for="popu">Popularité : </label>
                 <select name="popu">
                   <?php foreach ($popus as $popu) { ?>
-                    <option value="<?php echo $key; ?>"<?php if(!empty($_GET['popu'])) { if($_GET['popu'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $popu; ?></option>
+                    <option value="<?php echo $popu; ?>"<?php if(!empty($_POST['popu'])) { if($_POST['popu'] == $popu) { echo ' selected="selected"'; } } ?>><?php echo $popu; ?></option>
                     </option>
                   <?php } ?>
                 </select>
