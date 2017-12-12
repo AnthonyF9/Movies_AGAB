@@ -10,43 +10,47 @@ include_once('./inc/header.php');
 if (!empty($_POST['submitfiltres']))  {
 
 
+
   $sql = "SELECT * FROM all_movies
           WHERE 1 = 1";
 
+          // ANNEE
           if(is_numeric($_POST['years'])) {
               $annee = $_POST['years'];
               $sql .= " AND year = :annee";
           }
 
+          // CATEGORIE
           if(!empty($_POST['categ'])) {
               $categorie = $_POST['categ'];
-              $sql .= " AND genres LIKE :categorie ";
+              $sql .= " AND genres LIKE :categorie";
           }
 
-          // EN COURS
+          // RECHERCHE
+          if(!empty($_POST['search'])) {
+              $motclef = trim(strip_tags($_POST['search']));
+              $sql .= " AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
+          }
+
+          // POPULARITE
           if(!empty($_POST['popu'])) {
               $popularite = $_POST['popu'];
               if ($popularite == 'Les plus populaires') {
-                $sql .= " AND 2 = 2 ORDER BY popularity DESC ";
+                $sql .= " ORDER BY popularity DESC";
               } else {
-                $sql .= " AND 2 = 2 ORDER BY popularity ASC ";
+                $sql .= " ORDER BY popularity ASC";
               }
-
           }
 
-
-          // if(!empty($_POST['search'])) {
-          //     $motclef = $_POST['search'];
-          //
-          //     $sql .= "AND directors LIKE :motclef OR title LIKE :motclef OR cast LIKE :motclef";
-          //
-          // }
+//echo $sql; die(); ===> Pour débugger
 
 
     $query = $pdo->prepare($sql);
-    // $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_INT);
+    if (!empty($_POST['search'])) {
+     $query->bindValue(':motclef','%'.$motclef.'%',PDO::PARAM_STR);
+    }
     if (!empty($_POST['categ'])) {
-      $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_INT);
+      $query->bindValue(':categorie','%'.$categorie.'%',PDO::PARAM_STR);
     }
     if (!empty($_POST['years']) && is_numeric($_POST['years'])) {
     $query->bindValue(':annee',$annee,PDO::PARAM_INT);
@@ -77,7 +81,7 @@ if (isset($_POST['log'])) {
 
       <main>
 
-        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_POST['categ'])) { echo '"'.$categorie.'"'; } ?> <?php if (!empty($_POST['years']) && is_numeric($_POST['years'])) { echo '"'.$annee.'"'; } ?></h2>
+        <h2 class="titlesearch"> Resultats de la recherche <?php if(!empty($_POST['categ'])) { echo '"'.$categorie.'"'; } ?>  <?php if (!empty($_POST['years']) && is_numeric($_POST['years'])) { echo '"'.$annee.'"'; } ?> <?php if(!empty($_POST['popu'])) { echo '"'.$popularite.'"'; } ?> <?php if(!empty($_POST['search'])) { echo '"'.$motclef.'"'; } ?>  </h2>
         <p> <?= $fail ?> </p>
 
         <div id="flexAffiches">

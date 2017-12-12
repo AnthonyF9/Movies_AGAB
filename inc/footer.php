@@ -12,7 +12,7 @@
       <!-- Mon script -->
       <script src="./assets/javascript/main.js" type="text/javascript"></script>
       <script>
-            
+
       </script>
   </body>
 </html>

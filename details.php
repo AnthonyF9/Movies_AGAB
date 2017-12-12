@@ -20,18 +20,18 @@ if (!empty($_GET['movie'])) {
 }else{
   header('Location: ./404.php');
 }
+
 $button = '';
 if (!empty($_GET['bouton'])) {
-
-  $sql = "SELECT movie_id FROM notes AS n RIGHT JOIN all_movies AS m ON m.id = n.id_movie WHERE m.slug = :movie";
-  $query = $pdo->prepare($sql);
+  $sql2 = "SELECT movie_id FROM notes AS n RIGHT JOIN all_movies AS m ON m.id = n.id_movie WHERE m.slug = :movie";
+  $query = $pdo->prepare($sql2);
   $query->bindValue(':movie', $slug, PDO::PARAM_STR);
   $query->execute();
   $note = $query->fetch();
   if(!empty($note['movie_id'])){
-    $button = 'Retrait';
+    $button = 'Retirer de la liste';
   }else {
-    $button = 'A voir';
+    $button = 'Ajouter à la liste';
   }
 }
 

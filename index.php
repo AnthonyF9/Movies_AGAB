@@ -29,7 +29,6 @@ include_once('./inc/header.php');
 
   if(!empty($_POST['submitfiltres'])) {
 
-
   }
 
   $sql = "SELECT DISTINCT genres FROM all_movies ORDER BY genres ASC";
