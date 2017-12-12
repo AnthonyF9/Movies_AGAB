@@ -14,10 +14,44 @@ else {
         <div id="alpha">
           <h1>Statistiques</h1>
           <?php
-          // $sql = "SELECT id FROM all_movies WHERE 1=1";
-          // $query = $pdo->prepare($sql);
-          // $query->execute();
-          // $user = $query->fetch();
+          //Nb de films dans la base de données
+            $sql = "SELECT COUNT(*) FROM all_movies WHERE 1=1";
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $nbFilms = $query->fetchColumn(); ?>
+          <p><?php echo $nbFilms; ?> films dans la base de données.</p>
+          <?php
+          //Nb d'utilisateurs
+            $sql = "SELECT COUNT(*) FROM users WHERE 1=1";
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $users = $query->fetchColumn(); ?>
+          <p><?php echo $users; ?> utilisateurs.</p>
+          <?php
+          //Nb d'utilisateurs inscrits par semaine depuis les 5 dernières semaines
+          $nbSemaines = 5;
+          for ($i=$nbSemaines; $i > 0 ; $i--) {
+            $sql = "SELECT COUNT(*) FROM users WHERE 1=1 AND created_at BETWEEN NOW()-interval 7*$i day AND NOW()-interval 7*($i-1) day";
+            $query = $pdo->prepare($sql);
+            $query->execute();
+            $usersInscrits[$i] = $query->fetchColumn();
+            ?>
+            <p><?php echo $usersInscrits[$i]; ?> utilisateur(s) inscrit(s) <?php echo $i ?> semaine(s) plus tôt.</p> <?php
+          }
+          // debug($usersInscrits);
+          $totalUserInscritsDernieresSemaines = array_sum($usersInscrits);
+          $userInscritsParSemaine = $totalUserInscritsDernieresSemaines/$nbSemaines; ?>
+          <p><?php echo $userInscritsParSemaine; ?> utilisateurs inscrits en moyenne par semaine depuis <?php echo $nbSemaines; ?> semaines.</p><?php
+          //Les 30 films les plus ajoutés à des listes de films à voir
+          $sql = "SELECT a.title
+                  FROM notes AS n
+                  LEFT JOIN all_movies AS a
+                  ON n.id_movie = a.id
+                  WHERE n.note IS NULL";
+          $query = $pdo->prepare($sql);
+          $query->execute();
+          $filmsLesPlusAVoir = $query->fetchAll();
+          // debug($filmsLesPlusAVoir);
           ?>
         </div>
       </main>
