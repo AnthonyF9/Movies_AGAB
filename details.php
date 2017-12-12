@@ -21,6 +21,25 @@ if (!empty($_GET['movie'])) {
   header('Location: ./404.php');
 }
 
+if(!empty($_POST['addlist'])) {
+
+
+         $sql = "INSERT INTO notes (title,auteur,content,created_at,status) VALUES (:title,:auteur,:content,NOW(),:status)";
+         $query = $pdo->prepare($sql);
+
+         $query->bindValue(':title', $title, PDO::PARAM_STR );
+         $query->bindValue(':auteur', $auteur, PDO::PARAM_STR);
+         $query->bindValue(':content', $content, PDO::PARAM_STR);
+         $query->bindValue(':status', $status, PDO::PARAM_STR);
+
+         $query->execute();
+
+
+      } else {
+        print_r($errors);
+      }
+
+}
 
 
 include_once('./inc/header.php');
@@ -55,9 +74,11 @@ include_once('./inc/header.php');
 
 
 
-    <div>
-      <label class="label" for="categ"> Ajouter à sa liste : </label>
-      <input class="input" type="checkbox" name="categ" placeholder="" value="addlist">
+    <div id="addlist" <?php if (!is_logged()){ echo 'style="display:none;"'; } ?> >
+      <form id="formaddlist" action="" method="post">
+        <label class="label" for="categ"> Ajouter à sa liste : </label>
+        <input class="input" type="checkbox" name="addlist" placeholder="" value="addlist">
+      </form>
     </div>
 
   </main>
