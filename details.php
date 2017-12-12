@@ -21,19 +21,7 @@ if (!empty($_GET['movie'])) {
   header('Location: ./404.php');
 }
 
-$button = '';
-if (!empty($_GET['bouton'])) {
-  $sql2 = "SELECT movie_id FROM notes AS n RIGHT JOIN all_movies AS m ON m.id = n.id_movie WHERE m.slug = :movie";
-  $query = $pdo->prepare($sql2);
-  $query->bindValue(':movie', $slug, PDO::PARAM_STR);
-  $query->execute();
-  $note = $query->fetch();
-  if(!empty($note['movie_id'])){
-    $button = 'Retirer de la liste';
-  }else {
-    $button = 'Ajouter à la liste';
-  }
-}
+
 
 include_once('./inc/header.php');
 ?>
@@ -61,10 +49,16 @@ include_once('./inc/header.php');
         echo '<p>'.$movie['plot'].'</p>';
         echo '</section>';
 
+
+
     ?>
 
-    <input type="submit" name="bouton" value="
-    <?php echo $button; ?>">
+
+
+    <div>
+      <label class="label" for="categ"> Ajouter à sa liste : </label>
+      <input class="input" type="checkbox" name="categ" placeholder="" value="addlist">
+    </div>
 
   </main>
 
