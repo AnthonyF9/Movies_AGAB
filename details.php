@@ -1,5 +1,5 @@
 <?php
-$title = 'Detail';
+$title = 'Détail';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
 // session_start();
@@ -72,6 +72,10 @@ include_once('./inc/header.php');
 
     ?>
 
+<<<<<<< HEAD
+    <input class="validfiltre" type="submit" name="bouton" value="
+    <?php echo $button; ?>">
+=======
 
 
     <div id="addlist" <?php if (!is_logged()){ echo 'style="display:none;"'; } ?> >
@@ -80,6 +84,7 @@ include_once('./inc/header.php');
         <input class="input" type="checkbox" name="addlist" placeholder="" value="addlist">
       </form>
     </div>
+>>>>>>> 57b5d8f5f02da9d331561567dfeabe70a7f7ca5a
 
   </main>
 
