@@ -57,6 +57,10 @@ a
 {
   color: red;
 }
+.hello
+{
+  color: orange;
+}
 .flex-row
 {
   display: flex;
@@ -87,6 +91,10 @@ button, .validfiltre
   color: #bfbfbf;
   padding: 2.5px;
   margin-top: 10px;
+}
+.validfiltre
+{
+  color: orange;
 }
 #form
 {

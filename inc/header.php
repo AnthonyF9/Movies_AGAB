@@ -27,7 +27,7 @@
               }
               elseif (is_logged() == true) { ?>
                 <li><a href="./a-voir.php">Votre liste</a></li>
-                <li><span>Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span></li>
+                <li><span class="hello">Bonjour <?php echo $_SESSION['user']['pseudo'] ?></span></li>
                 <li><span><a href="./index.php?log=out">Se déconnecter</a></span></li><?php
               }
               else { ?>

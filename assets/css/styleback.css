@@ -131,6 +131,20 @@ main {
   margin: 5px 10px;
   padding: 10px;
 }
+#gamma .list-users {
+  width: 1000px;
+  margin: auto;
+}
+#gamma .list-users tr td , #gamma .list-users tr th {
+  border: 1px solid white;
+  padding: 5px;
+  text-align: center;
+}
+#delta {
+  background-color: #2C3E50;
+  margin: 5px 10px;
+  padding: 10px;
+}
 
 a {
   color: red;
