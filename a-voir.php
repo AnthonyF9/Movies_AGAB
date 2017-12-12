@@ -2,7 +2,7 @@
 $title = 'Votre liste';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
-include_once('./cookies.php'); //pdo, fonctions et sesions_start apppelés dedans
+include_once('./cookies.php'); //
 if(is_logged() == true){
   $idUser = $_SESSION['user']['id'];
   $sql = "SELECT n.id_movie,n.id_user,n.note,a.title,a.slug
