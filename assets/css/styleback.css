@@ -95,9 +95,11 @@ a {
   color: red;
 }
 
-table {
+table td, th {
   border-collapse: collapse;
-  border: 1px solid white;
+  border: 1px solid black;
+  padding:6px;
+}
 
 footer {
   min-height: 50px;
@@ -108,5 +110,4 @@ footer {
   left: 0;
   right: 0;
   padding: 10px 5%;
->>>>>>> eae3bc1d7641dbcb1cf879602113a1bca8d624d8
 }
