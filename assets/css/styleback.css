@@ -1,0 +1,12 @@
+body {
+  background-color: #333333;
+}
+
+a {
+  color: red;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid white;
+}
