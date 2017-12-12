@@ -10,9 +10,9 @@
       <!-- Le script JQuery User Interface -->
       <script src="./assets/javascript/jquery-ui.js" type="text/javascript"></script>
       <!-- Mon script -->
-      <script src="./assets/javascript/main.js" type="text/javascript"></script>
+      <script src="./assets/javascript/mainback.js" type="text/javascript"></script>
       <script>
-            
+
       </script>
   </body>
 </html>
