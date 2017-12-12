@@ -15,6 +15,16 @@ body {
   margin-left: 50px;
   list-style-type: circle;
 }
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.alignVertical {
+  position: relative;
+  top : 50%;
+  transform: translateY(-50%);
+}
 
 #wrapper {
   min-height: 100%;
@@ -85,6 +95,17 @@ main {
   padding: 10px 0 80px;
   position: relative;
 }
+#pagination {
+  background-color: #2C3E50;
+  margin: 5px 10px;
+  padding: 10px;
+}
+#pagination p {
+  text-align: center;
+}
+#pagination .allerAPage {
+  width: 30px;
+}
 #alpha {
   background-color: #2C3E50;
   margin: 5px 10px;
@@ -104,6 +125,11 @@ main {
   font-size: 1.5em;
   font-weight: bold;
   margin: 5px 0;
+}
+#gamma {
+  background-color: #2C3E50;
+  margin: 5px 10px;
+  padding: 10px;
 }
 
 a {

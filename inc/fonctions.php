@@ -179,5 +179,39 @@ function list_affiche($movie,$index1,$index2,$index3)
   }
   return $return;
 }
-
+function paginationIndex($page,$nbPages,$file)
+{
+  if ($page < 0 || $page > $nbPages) {
+    header('Location: ./' . $file . '.php');
+  } ?>
+  <div>
+    <?php
+      if($page-1 > 0) {
+        ?><a href="<?php echo $file ?>.php?page=<?php echo $page-1; ?>"><button class="alignVertical" type="button" name="button">Page précédente</button></a><?php
+      } ?>
+  </div>
+  <div>
+    <p>Page <?php echo $page ?> sur <?php echo $nbPages ?></p>
+    <div>
+      <form class="" action="" method="post">
+        <p>
+          <?php
+          if(!empty($_POST['submit'])) {
+            header('Location: ./'. $file .'.php?page='.$_POST['navpage']);
+          }
+          ?>
+          <label class="label" for="navpage">Aller à la page</label>
+          <input class="input allerAPage" type="number" name="navpage" value="<?php if(!empty($_POST['navpage'])) { echo $_POST['navpage'];} ?>" />
+          <label class="label" for="submitted"></label>
+          <input class="input" type="submit" name="submit" value="Go">
+      </form>
+    </div>
+  </div>
+  <div>
+    <?php if($page+1 <= $nbPages) {
+      ?><a href="<?php echo $file ?>.php?page=<?php echo $page+1; ?>"><button class="alignVertical" type="button" name="button">Page suivante</button></a><?php
+    } ?>
+  </div>
+  <?php
+}
 ?>

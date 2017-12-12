@@ -16,7 +16,7 @@
         <ul>
           <li><a href="./index.php">Retourner sur Movies AGAB</a></li>
           <li><a href="./dashboard.php">Accueil du panneau de contrôle</a></li>
-          <li><a href="./back-list-movies.php">Liste de films</a></li>
+          <li><a href="./back-list-movies.php">Liste des films</a></li>
           <li><a href="./back-users.php">Gestion des utilisateurs</a></li>
         </ul>
       </nav>
