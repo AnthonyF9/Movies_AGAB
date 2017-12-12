@@ -15,6 +15,7 @@
     <nav>
       <ul>
         <li><a href="./index.php">Accueil</a></li>
+        <li><a href="./back-list-movies.php">liste de films</a></li>
       </ul>
     </nav>
   </div>

@@ -1,7 +1,14 @@
 
 
-<?php include('inc/pdo.php');
-session_start();
+<?php
+include_once('./cookies.php'); // pdo, session start et fonctions inside
+include_once('./inc/headerback.php');
+if (is_admin() == true) {
+
+}
+else {
+  header('Location: ./index.php');
+}
 ?>
 <?php
 
