@@ -70,35 +70,39 @@ include_once('./inc/header.php');
 
 
             <form id="form" class="show" action="search.php" method="post">
-              <div id="genreFilm"><?php
-                foreach ($tableau as $genre) { ?>
+              <div class="flex-column">
+                <div id="genreFilm"><?php
+                  foreach ($tableau as $genre) { ?>
+                    <div>
+                      <label class="label" for="categ"> <?= $genre ?> : </label>
+                      <input class="input" type="checkbox" name="categ" placeholder="" value="<?= $genre ?>">
+                    </div> <?php
+                  } ?>
+                </div>
+                <div class="flex-row">
                   <div>
-                    <label class="label" for="categ"> <?= $genre ?> : </label>
-                    <input class="input" type="checkbox" name="categ" placeholder="" value="<?= $genre ?>">
-                  </div> <?php
-                } ?>
+                    <label class="label" for="years">Année : </label>
+                    <select name="years">
+                      <option value="All"> All </option>
+                      <?php foreach ($dates as $date) { ?>
+                        <option <?php if(!empty($_POST['years'])) { if($value == $_POST['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
+                        </option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="label" for="popu">Popularité : </label>
+                    <select name="popu">
+                      <?php foreach ($popus as $popu) { ?>
+                        <option value="<?php echo $popu; ?>"<?php if(!empty($_POST['popu'])) { if($_POST['popu'] == $popu) { echo ' selected="selected"'; } } ?>><?php echo $popu; ?></option>
+                        </option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
+                </div>
               </div>
-              <div>
-                <label class="label" for="years">Année : </label>
-                <select name="years">
-                  <option value="All"> All </option>
-                  <?php foreach ($dates as $date) { ?>
-                    <option <?php if(!empty($_POST['years'])) { if($value == $_POST['years']) { echo 'selected="selected" ';}} ?> value="<?php echo $date['year']; ?>"><?php echo $date['year']; ?>
-                    </option>
-                  <?php } ?>
-                </select>
-              </div>
-              <div>
-                <label class="label" for="popu">Popularité : </label>
-                <select name="popu">
-                  <?php foreach ($popus as $popu) { ?>
-                    <option value="<?php echo $popu; ?>"<?php if(!empty($_POST['popu'])) { if($_POST['popu'] == $popu) { echo ' selected="selected"'; } } ?>><?php echo $popu; ?></option>
-                    </option>
-                  <?php } ?>
-                </select>
-              </div>
-              <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
-              <input type="submit" name="submitfiltres" value="Submit" formnovalidate>
+              <input class="validfiltre" type="submit" name="submitfiltres" value="Submit" formnovalidate>
 
             </form>
         </div>

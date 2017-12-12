@@ -1,5 +1,5 @@
 <?php
-$title = 'Detail';
+$title = 'Détail';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
 // session_start();
@@ -63,7 +63,7 @@ include_once('./inc/header.php');
 
     ?>
 
-    <input type="submit" name="bouton" value="
+    <input class="validfiltre" type="submit" name="bouton" value="
     <?php echo $button; ?>">
 
   </main>
