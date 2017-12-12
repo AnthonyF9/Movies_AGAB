@@ -21,25 +21,20 @@ if (!empty($_GET['movie'])) {
   header('Location: ./404.php');
 }
 
-if(!empty($_POST['addlist'])) {
+
+if(!empty($_POST['submitaddlist'])) {
 
 
-         $sql = "INSERT INTO notes (title,auteur,content,created_at,status) VALUES (:title,:auteur,:content,NOW(),:status)";
+         $sql = "INSERT INTO notes (id,id_user,id_movie,note,created_at) VALUES (:id,:id_user,:id_movie,'NULL',NOW())";
          $query = $pdo->prepare($sql);
 
-         $query->bindValue(':title', $title, PDO::PARAM_STR );
-         $query->bindValue(':auteur', $auteur, PDO::PARAM_STR);
-         $query->bindValue(':content', $content, PDO::PARAM_STR);
-         $query->bindValue(':status', $status, PDO::PARAM_STR);
 
          $query->execute();
 
-
-      } else {
-        print_r($errors);
+         echo 'bravo';
       }
 
-}
+
 
 
 include_once('./inc/header.php');
@@ -59,7 +54,7 @@ include_once('./inc/header.php');
         echo '<p>Réalisateur : '.$movie['directors'].'</p>';
         echo '<p>Casting : '.$movie['cast'].'</p>';
         echo '<p>Scénariste : '.$movie['writers'].'</p>';
-        echo '<p>Durée : '.$movie['runtime'].'</p>';
+        echo '<p>Durée : '.$movie['runtime']. ' minutes' . '</p>';
         echo '<p>Limite d\'âge : '.$movie['mpaa'].'</p>';
         echo '<p>Note : '.$movie['rating'].'</p>';
         echo '<p>Popularité : '.$movie['popularity'].'</p>';
@@ -72,19 +67,15 @@ include_once('./inc/header.php');
 
     ?>
 
-<<<<<<< HEAD
-    <input class="validfiltre" type="submit" name="bouton" value="
-    <?php echo $button; ?>">
-=======
 
 
     <div id="addlist" <?php if (!is_logged()){ echo 'style="display:none;"'; } ?> >
       <form id="formaddlist" action="" method="post">
         <label class="label" for="categ"> Ajouter à sa liste : </label>
         <input class="input" type="checkbox" name="addlist" placeholder="" value="addlist">
+        <input type="submit" name="submitaddlist" value="Ajouter" formnovalidate>
       </form>
     </div>
->>>>>>> 57b5d8f5f02da9d331561567dfeabe70a7f7ca5a
 
   </main>
 

@@ -9,6 +9,7 @@
 }
 body {
   background-color: #333333;
+  /*overflow-x:hidden; /* on empeche le defillement horizontale */ */
 }
 
 /*header*/
@@ -16,7 +17,6 @@ body {
 header
 {
   margin: auto;
-  width: 100%;
   background-color: #404040;
   border: #7f7f7f 5px solid;
   color: #bfbfbf;
@@ -118,7 +118,7 @@ button, .validfiltre
 }
 .affiche {
   position: relative;
-  margin: 15px;
+  margin: auto;
 }
 .affiche .img {
   height: 325px;
@@ -193,6 +193,10 @@ button, .validfiltre
 
 .show {
   display: none;
+}
+
+.titlesearch {
+  color : orange;
 }
 
 /* ====================================================================== */

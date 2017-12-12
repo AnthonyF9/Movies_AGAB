@@ -102,7 +102,7 @@ include_once('./inc/header.php');
                   <?php   nouvelInputSQL2('Recherche','text','search','Rechercher un film',$errors) ?>
                 </div>
               </div>
-              <input class="validfiltre" type="submit" name="submitfiltres" value="Submit" formnovalidate>
+              <input class="validfiltre" type="submit" name="submitfiltres" value="Rechercher" formnovalidate>
 
             </form>
         </div>
