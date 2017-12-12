@@ -1,5 +1,5 @@
 <?php
-$title = 'Accueil';
+$title = 'Recherche';
 // include_once('./inc/pdo.php');
 // include_once('./inc/fonctions.php');
 // session_start();
