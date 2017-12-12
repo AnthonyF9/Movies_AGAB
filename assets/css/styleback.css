@@ -1,0 +1,102 @@
+html {
+  height: 100%;
+}
+body {
+  background: #ffffff;
+  color: white;
+  /*color: red;*/
+  height: 100%;
+}
+.disc {
+  margin-left: 50px;
+  list-style-type: disc;
+}
+.circle {
+  margin-left: 50px;
+  list-style-type: circle;
+}
+
+#wrapper {
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: #c2e3f0;
+  position: relative;
+}
+header {
+  min-height: 50px;
+  background-color: #2C3E50;
+  padding: 1%;
+  position: relative;
+  top: 0px;
+  z-index: 10;
+}
+header div:nth-child(1) {
+  display: flex;
+}
+header div:nth-child(1) h1 {
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: inset 0 0 20px #2C3E50;
+  width: 30%;
+  font-size: 1.1em;
+  line-height: 50px;
+}
+header div:nth-child(1) h1 a {
+  color: white;
+}
+header div:nth-child(1) nav {
+  position: relative;
+  text-align: center;
+  width: 69%;
+  margin-left: 1%;
+  line-height: 50px;
+}
+header div:nth-child(1) nav ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 5px 0 0;
+}
+header div:nth-child(1) nav ul li {
+  list-style-type: none;
+}
+header div:nth-child(1) nav ul li a {
+  padding: 0 10px;
+  color: grey;
+}
+header div:nth-child(1) nav ul li>a:hover {
+  background: #FF3838;
+  border-radius: 10px;
+  color: white;
+  display: block;
+}
+header div:nth-child(1) nav ul li span a:hover {
+  color: white;
+}
+header h2 {
+  position: relative;
+  text-align: center;
+  margin: 10px 0 0;
+  line-height: 50px;
+  font-size: 2em;
+}
+main {
+  height: 100%;
+  padding: 10px 0 80px;
+  position: relative;
+}
+#alpha {
+  background-color: #2C3E50;
+  margin: 5px 10px;
+  padding: 10px;
+}
+footer {
+  min-height: 50px;
+  background-color: #2C3E50;
+  margin: 10px 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 5%;
+}
