@@ -85,11 +85,11 @@ main {
   padding: 10px 0 80px;
   position: relative;
 }
-/*#alpha {
+#alpha {
   background-color: #2C3E50;
   margin: 5px 10px;
   padding: 10px;
-}*/
+}
 
 a {
   color: red;
@@ -98,7 +98,7 @@ a {
 table {
   border-collapse: collapse;
   border: 1px solid white;
-
+}
 footer {
   min-height: 50px;
   background-color: #2C3E50;
