@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./assets/css/default.css">
     <link rel="stylesheet" href="./assets/css/styleback.css">
     <meta charset="utf-8">
-    <title><?php echo $title ?></title>
+    <title></title>
   </head>
 <body>
 <div id="wrapper">
@@ -21,5 +21,5 @@
         </ul>
       </nav>
     </div>
-    <h2><?php echo $title ?></h2>
+    <h2></h2>
   </header>
