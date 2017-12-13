@@ -40,7 +40,7 @@ if (!empty($_GET['token'])) {
             //Préparation de la requêtepseudo
             $queryPseudo = $pdo->prepare($sqlPseudo);
             //Protection contre les injections SQL
-            $queryPseudo->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
+            // $queryPseudo->bindValue(':pseudo',$pseudo,PDO::PARAM_STR);
             $query->bindValue(':token',$token,PDO::PARAM_STR);
             //Exécution de la requêtepseudo
             $queryPseudo->execute();
@@ -63,7 +63,7 @@ if (!empty($_GET['token'])) {
             //Préparation de la requêtemail
             $queryMail = $pdo->prepare($sqlMail);
             //Protection contre les injections SQL
-            $queryMail->bindValue(':mail',$mail,PDO::PARAM_STR);;
+            // $queryMail->bindValue(':mail',$mail,PDO::PARAM_STR);
             $query->bindValue(':token',$token,PDO::PARAM_STR);
             //Exécution de la requêtemail
             $queryMail->execute();
